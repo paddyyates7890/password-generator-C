@@ -3,7 +3,7 @@
 #ifndef _file_h
 #define _file_h
 
-#define WORDS_FILE "/home/patrick/nouns.txt"
+#define WORDS_FILE "/path/to/nouns.txt"
 
 static FILE *open_file();
 char* read_line(int line);
