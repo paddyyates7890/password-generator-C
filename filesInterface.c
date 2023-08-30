@@ -1,4 +1,4 @@
-#include "fileReader.h"
+#include "./filesInterface.h"
 #include <ctype.h>
 #include <stdlib.h>
 #include <stdio.h>
