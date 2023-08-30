@@ -4,8 +4,12 @@
 #include <stdio.h>
 #include <string.h>
 
-static FILE *open_file() {
+static FILE *open_file_read() {
 	return fopen(WORDS_FILE, "r");
+}
+
+static FILE *open_file_write() {
+	return fopen(PASS_FILE, "w");
 }
 
 static void close_file(FILE *file){
@@ -18,7 +22,7 @@ void fix_word(char word[512]){
 }
 
 char* read_line(int line){
-	FILE *f = open_file();
+	FILE *f = open_file_read();
 	int count = 0;
 	char word[512];
 	char *pass;
