@@ -1,3 +1,6 @@
+#ifndef __fileinterface
+#define __fileinterface
+
 #include "./filesInterface.h"
 #include <ctype.h>
 #include <stdlib.h>
@@ -39,3 +42,20 @@ char* read_line(int line){
 	close_file(f);
 	return pass;
 }
+
+char* read_whole_file(){
+	FILE *f = open_file_read();
+	// TODO: Concatinate the whole file and make it nice and then print it.
+	char word[1024];
+	while (fgets(word, sizeof(word), f) != NULL) {
+		// concatinate all of the words;	
+	}
+}
+
+int write_line(char *line){
+	FILE *f = open_file_write();	
+	fputs(line, f);
+	return 1;
+}
+
+#endif

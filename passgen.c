@@ -2,12 +2,13 @@
 #include <stdlib.h>
 #include "./randomStringGenerator.c"
 #include "./randomWordsGenerator.c"
+#include "./savePasswords.c"
 
 int main(int argc, char *argv[])
 {	
-	char * pass;
+	char *pass;
 	char choice;
-	char application;
+	char application[100];
 
 	char header[] = "\n#################################################################################################\n#                                       password machine                                      #\n#################################################################################################\n";
 	
@@ -19,7 +20,7 @@ int main(int argc, char *argv[])
 	if (choice == 'N' || choice == 'n') {
 		
 		printf("What is the password for \n");
-		scanf(" %s", &application);
+		scanf(" %s", application);
 
 
 		printf("Do you want a completely random password (r) or a password made from words (w)\n");
@@ -32,7 +33,8 @@ int main(int argc, char *argv[])
 			pass = genPassword();
 		}
 
-		//savePassword(pass, application); // make a file writer that will write to a passwords file and then encrypt it
+		// pass here is wrong 
+		savePassword(pass, application);
 	}
 	else {
 		printf("Not yet implemented");

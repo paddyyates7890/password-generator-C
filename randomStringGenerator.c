@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
 char * genRandomPassword(){
 	char characters[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!£$^&*?1234567890";
 	int charsSize = sizeof(characters) / sizeof(characters[0]);
