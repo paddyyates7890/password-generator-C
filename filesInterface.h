@@ -6,7 +6,8 @@
 #define WORDS_FILE "./nouns.txt"
 #define PASS_FILE "/home/patrick/passwords.txt"
 
-static FILE *open_file_read();
+int filesz(FILE *f);
+static FILE *open_file_read(char *file);
 static FILE *open_file_write();
 char* read_line(int line);
 char* read_whole_file();

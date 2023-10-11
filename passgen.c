@@ -33,12 +33,13 @@ int main(int argc, char *argv[])
 			pass = genPassword();
 		}
 
-		// pass here is wrong 
 		savePassword(pass, application);
+		free(pass);
 	}
 	else {
-		printf("Not yet implemented");
-
+		char *fileContents = read_whole_file();
+		printf("%s", fileContents);
+		free(fileContents);
 	}
 
 

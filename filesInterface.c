@@ -7,8 +7,26 @@
 #include <stdio.h>
 #include <string.h>
 
-static FILE *open_file_read() {
-	return fopen(WORDS_FILE, "r");
+
+int filesz(FILE *f){
+	fseek(f, 0, SEEK_END);
+	int size = ftell(f);
+	fseek(f, 0, SEEK_SET);
+
+	return size;
+}
+
+static FILE *open_file_read(char *file) {
+	if (strcmp(file ,"words") == 0) {
+		return fopen(WORDS_FILE, "r");
+	}
+	else if (strcmp(file, "pass") == 0) {
+		return fopen(PASS_FILE, "r");
+	}else {
+		printf("THERE WAS AN ERROR IN filesInterface.c");
+		exit(1);
+	}
+
 }
 
 static FILE *open_file_write() {
@@ -25,7 +43,7 @@ void fix_word(char word[512]){
 }
 
 char* read_line(int line){
-	FILE *f = open_file_read();
+	FILE *f = open_file_read("words");
 	int count = 0;
 	char word[512];
 	char *pass;
@@ -44,18 +62,24 @@ char* read_line(int line){
 }
 
 char* read_whole_file(){
-	FILE *f = open_file_read();
+	FILE *f = open_file_read("pass");
 	// TODO: Concatinate the whole file and make it nice and then print it.
 	char word[1024];
+	int size = filesz(f);
+	char *fileContents = malloc(size);
 	while (fgets(word, sizeof(word), f) != NULL) {
-		// concatinate all of the words;	
+		strcat(fileContents, word);
 	}
+	close_file(f);
+	return fileContents;
 }
 
 int write_line(char *line){
 	FILE *f = open_file_write();	
 	fputs(line, f);
+	close_file(f);
 	return 1;
 }
+
 
 #endif

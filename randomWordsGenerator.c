@@ -8,12 +8,11 @@ char * genPassword(){
 	srand(time(0));
 	int line1 = (rand() % 6801) + 1;
 	int line2 = (rand() % 6801) + 1;
-
+	char *finalPass = malloc(1024);
 	char *pass1 = read_line(line1);
-	printf("%s", pass1);
+	strcat(finalPass, pass1);
 	char *pass2 = read_line(line2);
-	printf("%s", pass2);
-	printf("\n");
+	strcat(finalPass, pass2);
 
-	return strcat(pass1, pass2);
+	return finalPass;
 }
